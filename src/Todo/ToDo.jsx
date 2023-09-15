@@ -6,15 +6,18 @@ export default function ToDo() {
     const [atividade, setAtividade] = useState("");
     const [lista, setLista] = useState([]);
     const [id, setId] = useState(1);
-    const [musica, setmusica] = useState(1);
-    const [album, setalbum] = useState(1);
+    const [album, setalbum] = useState("");
+    const [musica, setmusica] = useState("");
+    const [tempo, settempo] = useState("");
 
     const salvar = (e) => {
         e.preventDefault();
         setLista([...lista, {
             atividade: atividade,
             id: id,
-            musica: musica
+            musica: musica,
+            album: album,
+            tempo: tempo
         }]);
         setId(id + 1);
         setAtividade("");
@@ -24,9 +27,9 @@ export default function ToDo() {
         /*setLista(lista.filter((ativ) => (ativ.id !== id ? lista : null)));*/
 
         const auxLista = [];
-        lista.map((lista) => {
-            if (lista.id !== id) {
-                auxLista.push(lista);
+        lista.map((list) => {
+            if (list.id !== id) {
+                auxLista.push(list);
             }
         });
         setLista(auxLista);
@@ -34,29 +37,37 @@ export default function ToDo() {
     return (
         <div class="container">
             <Link to="/">home</Link>
-            <img class = "jukebox" src="https://cdn.mariapiacasa.com.br/media/catalog/product/cache/1/image/1000x/9df78eab33525d08d6e5fb8d27136e95/j/u/jukebox-classic-pequeno-_27296-01.jpg"></img>
-            <h1>Lista de Musicas</h1>
+            <img class = "jukebox" src="https://o.remove.bg/downloads/34c3af20-9a3c-4b9a-9b36-42690e5dcbeb/jukebox-classic-pequeno-_27296-01-removebg-preview.png"></img>
+            <h1>Lista de Musicas 🎸</h1>
             <form onSubmit={salvar}>
 
-                  
+                <h4><i>Album</i></h4>  
                 <input type="text"
                     value={album}
                     onChange={(e) => { setalbum(e.target.value) }} />
                
           
       
-
+<h4><i>Musica</i></h4>
             <input type="text"
                     value={musica}
                     onChange={(e) => { setmusica(e.target.value) }} />
+
+<h4><i>Tempo</i></h4>
+                       <input type="text"
+                    value={tempo}
+                    onChange={(e) => { settempo(e.target.value) }} />
+<br></br>
+<br></br>
                 <button>ADICIONAR</button>
             </form>
 
             {lista.map((ativ) =>
                 <ul key={ativ.id}>
                     <li>
-                        <p>Album:{ativ.album}</p>
-                        <p>{ativ.musica}</p>
+                        <p>Album: {ativ.album}</p>
+                        <p>Musica: {ativ.musica}</p>
+                        <p>Tempo: {ativ.tempo}</p>
                         <button onClick={() => remover(ativ.id)}>Remover</button>
                     </li>
                 </ul>
