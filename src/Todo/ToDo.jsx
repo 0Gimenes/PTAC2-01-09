@@ -8,7 +8,7 @@ export default function ToDo() {
     const listaLocalStorage = JSON.parse(localStorage.getItem("Lista"));
     const [atividade, setAtividade] = useState("");
     const [lista, setLista] = useState( listaLocalStorage || []);
-    const [id, setId] = useState(1);
+    const [id, setId] = useState(listaLocalStorage [listaLocalStorage.length - 1]?.id + 1 || 1);
     const [album, setalbum] = useState("");
     const [musica, setmusica] = useState("");
     const [tempo, settempo] = useState("");
