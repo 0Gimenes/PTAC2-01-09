@@ -69,6 +69,9 @@ useEffect(()=>{localStorage.setItem("Lista", JSON.stringify(lista))},[lista]);
 
             {lista.map((ativ) =>
                 <ul key={ativ.id}>
+                    <Link to={`/detalhe/${ativ.id}`}>
+                        <li>{ativ.album} </li>
+                    </Link>
                     <li>
                         <p>Album: {ativ.album}</p>
                         <p>Musica: {ativ.musica}</p>
