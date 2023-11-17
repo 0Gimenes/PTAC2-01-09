@@ -1,4 +1,6 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import Card from "../../Componente/Card";
+
 export default function Detalhe(){
     const {id} = useParams();
     const lista = JSON.parse( localStorage.getItem("lista"));
@@ -12,9 +14,7 @@ return null;
 console.log(lista);
 
 return(
-    <div>
-    <h1>Olá {id}</h1>
-    </div>
+    <Card atividade={atividade[0]}/>
 );
 
 
